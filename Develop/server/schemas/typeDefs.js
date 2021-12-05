@@ -1,18 +1,50 @@
-// * `typeDefs.js`: Define the necessary `Query` and `Mutation` types:
+const  { gql } = require('apollo-server-express');
 
-// 		* `Query` type:
+const typeDefs = gql`
 
-// 			* `me`: Which returns a `User` type.
-		
-// 		* `Mutation` type:
+  input BookInput {
+    authors: [String]
+    description: String!
+    title: String!
+    bookId: String!
+    image: String
+    link: String
+  }
 
-// 			* `login`: Accepts an email and password as parameters; returns an `Auth` type.
+  type User {
+    _id: ID!
+    username: String!
+    email: String!
+    bookCount: Int
+    savedBooks: [Book]
+  }
 
-// 			* `addUser`: Accepts a username, email, and password as parameters; returns an `Auth` type.
+  type Book {
+    bookId: String!
+    authors: [String]
+    description: String!
+    title: String!
+    image: String
+    link: String
+  }
 
-// 			* `saveBook`: Accepts a book author's array, description, title, bookId, image, and link as parameters; returns a `User` type. (Look into creating what's known as an `input` type to handle all of these parameters!)
+  type Auth {
+    token: String!
+    user: [User]
+  }
 
-// 			* `removeBook`: Accepts a book's `bookId` as a parameter; returns a `User` type.
+  type Query {
+    me: [User]
+  }
+
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    saveBook(input: BookInput): [User]
+    removeBook(bookId: String!): [User]
+  }
+
+`
 			
 // 		* `User` type:
 
