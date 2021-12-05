@@ -4,6 +4,12 @@ const jwt = require('jsonwebtoken');
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 
+// 2. Modify the existing authentication middleware so that it works in the context of a GraphQL API.
+// 3. Create an Apollo Provider so that requests can communicate with an Apollo Server.
+
+//* `auth.js`: Update the auth middleware function to work with the GraphQL API.
+  //**Hint**: Refer to the class activities as a refresher on how to do this.
+
 module.exports = {
   // function for our authenticated routes
   authMiddleware: function (req, res, next) {

@@ -3,6 +3,10 @@ const path = require('path');
 const db = require('./config/connection');
 const routes = require('./routes');
 
+// 1. Set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API.
+
+//* `server.js`: Implement the Apollo Server and apply it to the Express server as middleware.
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
